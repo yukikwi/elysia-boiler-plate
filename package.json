@@ -3,12 +3,15 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts",
+    "dev": "bun run --watch src/server.ts",
+    "build": "bun build --minify --target bun --outdir dist src/index.ts",
+    "compile": "bun build --compile --minify --target bun --outfile server src/index.ts",
     "makemigrations": "npx drizzle-kit generate",
     "migrate": "npx drizzle-kit migrate"
   },
   "dependencies": {
     "@elysiajs/static": "^1.1.1",
+    "@elysiajs/swagger": "^1.1.1",
     "drizzle-orm": "^0.33.0",
     "elysia": "latest",
     "postgres": "^3.4.4"

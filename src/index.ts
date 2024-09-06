@@ -1,15 +1,19 @@
-import { Elysia } from "elysia";
-import exampleApp from "./example_app/routers";
-import { APP_PORT } from "./config";
-import staticPlugin from "@elysiajs/static";
+import cluster from "node:cluster";
+import process from "node:process";
+import { APP_WORKERS } from "./config";
 
-const app = new Elysia()
-  // static plugin 
-  // more information: https://elysiajs.com/plugins/static
-  .use(staticPlugin())
-  .use(exampleApp)
-  .listen(APP_PORT);
+if (cluster.isPrimary) {
+  console.log(`Primary ${process.pid} is running`);
+  
+  for (let i = 0; i < APP_WORKERS; i++) {
+    cluster.fork();
+  }
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+  cluster.on("exit", (worker) => {
+    console.log(`worker ${worker.process.pid} died`);
+    process.exit(1);
+  });
+} else {
+  await import("./server");
+  console.log(`Worker ${process.pid} started`);
+}
