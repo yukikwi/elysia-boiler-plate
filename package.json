@@ -8,6 +8,7 @@
     "migrate": "npx drizzle-kit migrate"
   },
   "dependencies": {
+    "@elysiajs/static": "^1.1.1",
     "drizzle-orm": "^0.33.0",
     "elysia": "latest",
     "postgres": "^3.4.4"
