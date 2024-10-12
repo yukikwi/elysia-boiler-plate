@@ -9,6 +9,10 @@ export const DB_PORT = parseInt(process.env.DB_PORT || "5432")
 export const DB_USER = process.env.DB_USER
 export const DB_PASSWORD = process.env.DB_PASSWORD
 export const DB_NAME = process.env.DB_NAME
+export const DB_PROVIDER = "pg"
+
+// CORS domain
+export const FRONTEND_URL = process.env.FRONTEND_URL || false
 
 // Swagger configuration
 export const SWAGGER_PATH = "/documents"
