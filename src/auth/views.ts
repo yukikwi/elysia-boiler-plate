@@ -5,13 +5,7 @@ const betterAuthView = (context: Context) => {
   const BETTER_AUTH_ACCEPT_METHODS = ["POST", "GET"]
   // validate request method
   if(BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
-    try {
-      console.log(context.request.url)
-      return auth.handler(context.request);
-    }
-    catch(error){
-      console.log(error)
-    }
+    return auth.handler(context.request);
   }
   else {
     context.error(405)
