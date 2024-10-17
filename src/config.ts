@@ -16,3 +16,6 @@ export const FRONTEND_URL = process.env.FRONTEND_URL || false
 
 // Swagger configuration
 export const SWAGGER_PATH = "/documents"
+
+// BetterAuth
+export const BETTER_AUTH_TRUSTED_DOMAIN = process.env.BETTER_AUTH_TRUSTED_DOMAIN?.split(",") || null
