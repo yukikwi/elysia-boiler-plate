@@ -1,9 +1,9 @@
 import { Session, User } from "../lib/auth";
 
 /**
- * Renders a simple greeting message.
+ * Renders an user information.
  *
- * @returns {string} A greeting message saying "Hello world".
+ * @returns {object} Object with user and session attributes.
  */
 const userInfo = (user: User | null, session: Session | null) => {
   return {
@@ -11,6 +11,7 @@ const userInfo = (user: User | null, session: Session | null) => {
     session: session
   }
 }
+
 // export application views
 export default {
   userInfo
