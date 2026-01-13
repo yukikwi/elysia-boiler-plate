@@ -6,8 +6,11 @@ import cors from "@elysiajs/cors";
 import exampleApp from "./example_app/routers";
 import authApp from "./auth/routers";
 import userApp from "./user/routers";
+import { opentelemetry } from "@elysiajs/opentelemetry";
 
 const app = new Elysia()
+  // opentelemetry
+  .use(opentelemetry())
   // static plugin 
   // more information: https://elysiajs.com/plugins/static
   .use(staticPlugin())
